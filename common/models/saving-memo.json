@@ -1,0 +1,45 @@
+{
+  "name": "SavingMemo",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "type": {
+      "type": "string",
+      "required": true,
+      "default": "income"
+    },
+    "amount": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "currency": {
+      "type": "string",
+      "default": "THB"
+    },
+    "note": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "date",
+      "required": true
+    },
+    "updatedDate": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}
