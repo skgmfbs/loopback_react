@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import AppRoute from "./views/AppRoute";
 import './App.css';
+
 
 class App extends Component {
   render() {
     return (
       <div>
-        <h1>My App</h1>
+        <AppRoute/>
       </div>
     );
   }
