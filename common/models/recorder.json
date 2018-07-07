@@ -1,0 +1,26 @@
+{
+  "name": "Recorder",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "savingMemos": {
+      "type": "hasMany",
+      "model": "SavingMemo",
+      "foreignKey": "recorderId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}
