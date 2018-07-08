@@ -5,18 +5,24 @@ export default class TotalCaptionComponent extends React.Component {
 
     state = {
         text: '',
-        collection: []
+        collection: [],
+        isSet: false
     };
 
-    constructor(props) {
-        super(props);
+    componentWillReceiveProps() {
+        this.setState({
+            isSet: false
+        });
     }
 
-    componentWillMount() {
-        this.setState({
-            text: this.props.text,
-            collection: this.props.collection
-        });
+    componentWillUpdate() {
+        if (!this.state.isSet) {
+            this.setState({
+                text: this.props.text,
+                collection: this.props.collection,
+                isSet: true
+            });
+        }
     }
 
     render() {
@@ -29,7 +35,7 @@ export default class TotalCaptionComponent extends React.Component {
         var total = 0;
         this.state.collection.forEach(x => {
             if (x.amount !== undefined
-                && Number.parseFloat(x.amount) !== NaN) {
+                && !isNaN(Number.parseFloat(x.amount))) {
                 if (x.type === Type.INCOME) {
                     total += Number.parseFloat(x.amount);
                 } else {

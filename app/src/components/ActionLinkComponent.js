@@ -10,10 +10,6 @@ export default class ActionLinkComponent extends React.Component {
         cssClass: ''
     };
 
-    constructor(props) {
-        super(props);
-    }
-
     componentWillMount() {
         this.setState({
             to: this.props.to,

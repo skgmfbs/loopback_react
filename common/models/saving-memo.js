@@ -16,4 +16,14 @@ module.exports = function (Savingmemo) {
         }
         next();
     });
+    Savingmemo.beforeRemote('replaceById', function (context, user, next) {
+        context.args.data.updatedDate = Date.now();
+        context.args.data.recorderId = context.req.accessToken.userId;
+        next();
+    });
+    Savingmemo.beforeRemote('*.*', function (context, user, next) {
+        console.log(context.method.name);
+        next();
+    });
+    
 };
